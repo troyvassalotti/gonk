@@ -1,11 +1,11 @@
 <script setup>
 const props = defineProps({
   available: Boolean,
-  onClick: Function
-})
+  onClick: Function,
+});
 
 function close() {
-  props.onClick()
+  props.onClick();
 }
 </script>
 

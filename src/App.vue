@@ -1,15 +1,15 @@
 <script setup>
 import SendHonk from "./components/SendHonk.vue";
 import ReceiveHonk from "./components/ReceiveHonk.vue";
-import Prompt from "./components/Prompt.vue"
-import {reactive} from "vue";
-import {retrieveHonk, soundLibrary} from "./lib/utils";
+import Prompt from "./components/Prompt.vue";
+import { reactive } from "vue";
+import { retrieveHonk, soundLibrary } from "./lib/utils";
 import "./assets/reset.css";
 
 const store = {
   state: reactive({
     availableHonk: retrieveHonk(),
-    toast: !!retrieveHonk()
+    toast: !!retrieveHonk(),
   }),
 
   /**
@@ -18,8 +18,8 @@ const store = {
   closeToast() {
     setTimeout(() => {
       store.state.toast = false;
-    }, 100)
-  }
+    }, 100);
+  },
 };
 </script>
 
@@ -30,14 +30,17 @@ const store = {
   </header>
   <article class="what">
     <h2 id="what">What is Gonk?</h2>
-    <p>Gonk is a platform for creating and sending <em>honks</em> to your friends. Honks are composed of a sound and a note. Create your honk by selecting a sound from our library and writing a personalized note for your recipient. You can then copy or share a URL to send along.</p>
+    <p>
+      Gonk is a platform for creating and sending <em>honks</em> to your friends. Honks are composed
+      of a sound and a note. Create your honk by selecting a sound from our library and writing a
+      personalized note for your recipient. You can then copy or share a URL to send along.
+    </p>
   </article>
   <div class="context">
-    <SendHonk :sounds="soundLibrary"/>
-    <ReceiveHonk :honk="store.state.availableHonk" class="honkAvailable"
-                 id="receivedHonk"/>
+    <SendHonk :sounds="soundLibrary" />
+    <ReceiveHonk :honk="store.state.availableHonk" class="honkAvailable" id="receivedHonk" />
   </div>
-  <Prompt :available="store.state.toast" :onClick="store.closeToast"/>
+  <Prompt :available="store.state.toast" :onClick="store.closeToast" />
 </template>
 
 <style>
@@ -47,7 +50,7 @@ const store = {
   font-style: oblique 0deg 15deg;
   font-weight: 300 1000;
   font-display: swap;
-  src: url("./fonts/Recursive_VF_1.084--subset_range_english_basic.woff2") format("woff2");
+  src: url("/fonts/Recursive_VF_1.084--subset_range_english_basic.woff2") format("woff2");
   unicode-range: U+0020-007F, U+00A9, U+2190-2193, U+2018, U+2019, U+201C, U+201D, U+2022;
 }
 
@@ -68,16 +71,17 @@ html {
   --step-6: clamp(3.9594rem, 3.4682rem + 1.7561vw, 4.2056rem);
 
   /* Colors */
-  --primary: #E4D6A7;
-  --secondary: #1C110A;
-  --tertiary: #9B2915;
-  --quadinary: #2541B2;
+  --primary: #e4d6a7;
+  --secondary: #1c110a;
+  --tertiary: #9b2915;
+  --quadinary: #2541b2;
 
   accent-color: var(--tertiary);
 }
 
 * {
-  font-variation-settings: "MONO" var(--mono, 1), "CASL" var(--casl, .75), "wght" var(--wght, 440), "slnt" var(--slnt, 0), "CRSV" var(--crsv, 0);
+  font-variation-settings: "MONO" var(--mono, 1), "CASL" var(--casl, 0.75), "wght" var(--wght, 440),
+    "slnt" var(--slnt, 0), "CRSV" var(--crsv, 0);
 }
 
 body {
@@ -101,7 +105,9 @@ body {
   animation: highlight 2s ease;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   --casl: 1;
   --mono: 0;
   --wght: 765;
@@ -113,14 +119,15 @@ h1 {
 
 a {
   color: var(--quadinary);
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 
 a:hover {
-  opacity: .80;
+  opacity: 0.8;
 }
 
-.header, .what {
+.header,
+.what {
   margin-block-end: clamp(3rem, 25vh, 6rem);
   max-inline-size: 75ch;
 }
@@ -130,7 +137,8 @@ a:hover {
 }
 
 @keyframes highlight {
-  0%, 75% {
+  0%,
+  75% {
     box-shadow: var(--tertiary) 0 0 5px 5px;
     outline: 1px solid var(--tertiary);
   }
@@ -151,16 +159,16 @@ a:hover {
 button {
   background-color: var(--tertiary);
   border: none;
-  border-radius: .5em;
+  border-radius: 0.5em;
   color: whitesmoke;
   cursor: pointer;
   display: block;
-padding-block: .75em;
-padding-inline: 1em;
-  transition: filter .2s ease;
+  padding-block: 0.75em;
+  padding-inline: 1em;
+  transition: filter 0.2s ease;
 }
 
 button:hover {
-   filter: brightness(.75);
+  filter: brightness(0.75);
 }
 </style>

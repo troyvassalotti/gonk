@@ -1,13 +1,13 @@
 [build]
-    command = "pnpm build || ( npm install pnpm && pnpm build )"
-    publish = "dist"
+command = "pnpm build || ( npm install pnpm && pnpm build )"
+publish = "dist"
 
 [build.processing]
-    skip_processing = true
+skip_processing = true
 
 [[headers]]
-    for = "/*"
-    [headers.values]
-        X-Content-Type-Options = "nosniff"
-        X-Frame-Options = "SAMEORIGIN"
-        X-XSS-Protection = "1"
+for = "/*"
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "SAMEORIGIN"
+X-XSS-Protection = "1"

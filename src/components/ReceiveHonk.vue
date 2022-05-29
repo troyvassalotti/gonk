@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, reactive} from "vue";
+import { onMounted, reactive } from "vue";
 
 defineProps({
   honk: Object,
@@ -7,16 +7,16 @@ defineProps({
 
 const store = reactive({
   audio: undefined,
-  playing: false
-})
+  playing: false,
+});
 
 function playHonk() {
   store.audio.play();
 }
 
 onMounted(() => {
-  store.audio = document.getElementById("yourHonk")
-})
+  store.audio = document.getElementById("yourHonk");
+});
 </script>
 
 <template>

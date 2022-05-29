@@ -50,12 +50,12 @@ function createUrl(e) {
         <div class="inputGroupContainer">
           <div v-for="(value, key, index) in sounds" class="inputGroup">
             <input
-                type="radio"
-                required
-                name="sound"
-                v-model="honk.sound"
-                :value="value"
-                :id="'honk' + index" />
+              type="radio"
+              required
+              name="sound"
+              v-model="honk.sound"
+              :value="value"
+              :id="'honk' + index" />
             <label :for="'honk' + index">{{ key }}</label>
           </div>
         </div>
@@ -63,13 +63,21 @@ function createUrl(e) {
       <div class="messageArea">
         <label class="stepLabel" for="honkMessage">Step 2: Write a Note</label>
         <p id="labelHint">Max length = 250 characters.</p>
-        <textarea id="honkMessage" name="message" v-model="honk.message" required spellcheck rows="5" maxlength="250" aria-describedby="labelHint"></textarea>
+        <textarea
+          id="honkMessage"
+          name="message"
+          v-model="honk.message"
+          required
+          spellcheck
+          rows="5"
+          maxlength="250"
+          aria-describedby="labelHint"></textarea>
         <div class="tooltipArea">
           <button
-              class="submitButton"
-              type="submit"
-              @click="createUrl"
-              :aria-disabled="!honk.sound || !honk.message">
+            class="submitButton"
+            type="submit"
+            @click="createUrl"
+            :aria-disabled="!honk.sound || !honk.message">
             Grab That Honk
           </button>
           <p class="tooltip">Please choose a sound and write a message.</p>
@@ -80,7 +88,8 @@ function createUrl(e) {
 </template>
 
 <style scoped>
-input, textarea {
+input,
+textarea {
   color-scheme: light dark;
 }
 
@@ -93,7 +102,7 @@ input, textarea {
 
 legend {
   font-size: var(--step--1);
-  padding-block: .5rem;
+  padding-block: 0.5rem;
   padding-inline: 12px;
 }
 
@@ -118,7 +127,7 @@ legend {
 }
 
 .inputGroupContainer {
-  --gap: .25ch;
+  --gap: 0.25ch;
   display: grid;
   row-gap: var(--gap);
 }
