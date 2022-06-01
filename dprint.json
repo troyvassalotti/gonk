@@ -3,9 +3,10 @@
   },
   "toml": {
   },
-  "includes": ["**/*.{json,toml,vue,js,html}"],
+  "includes": ["**/*.{json,toml,vue,js,html,css}"],
   "excludes": [
-    "**/*-lock.json"
+    "**/*-lock.json",
+    "dist"
   ],
   "plugins": [
     "https://plugins.dprint.dev/json-0.15.3.wasm",
