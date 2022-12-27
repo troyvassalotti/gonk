@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import { shareUrl } from "../lib/utils";
 
 defineProps({
@@ -11,6 +11,18 @@ const honk = reactive({
   message: "",
   url: "",
 });
+
+const store = reactive({
+  audio: undefined
+})
+
+function playHonk() {
+  store.audio.play();
+}
+
+onMounted(() => {
+  store.audio = document.getElementById("packagedHonk")
+})
 
 /**
  * Create the share URL for sending to a friend
@@ -44,6 +56,7 @@ function createUrl(e) {
 <template>
   <main>
     <h2>Send a Honk</h2>
+    <audio id="packagedHonk" :src="'/sounds/' + honk.sound"></audio>
     <form @submit.prevent class="honkForm">
       <fieldset class="soundArea">
         <legend class="stepLabel">Step 1: Choose Your Honk Sound</legend>
@@ -54,6 +67,7 @@ function createUrl(e) {
               required
               name="sound"
               v-model="honk.sound"
+              @change="playHonk"
               :value="value"
               :id="'honk' + index" />
             <label :for="'honk' + index">{{ key }}</label>
