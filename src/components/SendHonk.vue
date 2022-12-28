@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, reactive } from "vue";
 import { shareUrl } from "../lib/utils";
 

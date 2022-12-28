@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import SendHonk from "./components/SendHonk.vue";
 import ReceiveHonk from "./components/ReceiveHonk.vue";
 import Prompt from "./components/Prompt.vue";
@@ -13,7 +13,7 @@ const store = {
   }),
 
   /**
-   * Delayed by 100ms to keep smooth scrolling active
+   * @note Delayed by 100ms to keep smooth scrolling active
    */
   closeToast() {
     setTimeout(() => {

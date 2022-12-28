@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang=ts>
 const props = defineProps({
   available: Boolean,
   onClick: Function,
