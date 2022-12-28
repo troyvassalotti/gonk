@@ -1,35 +1,51 @@
 import sanitizeHtml from "sanitize-html";
+import { HonkData, Honk, AudioElement } from "./types";
+
+const honkRegEx = /\?honk=([^&]+)/
 
 /**
- * Read the URL in search of a honk
- * @returns {null|any}
+ * Read the URL in search of a honk.
  * @private
  */
-function _extractUrlData() {
-  const match = document.location.search.match(/\?honk=([^&]+)/);
+function extractUrlData(): HonkData | null {
+  const match = document.location.search.match(honkRegEx);
+
   if (match) {
     return JSON.parse(atob(match[1]));
   }
+
   return null;
 }
 
 /**
- * Create the share URL for sending your honk
- * @param honk
- * @returns {string}
+ * Create the share URL for sending your honk.
+ * @param honk - Honk object to be shared.
  */
-export function shareUrl(honk) {
+export function shareUrl(honk: Honk): string {
   const data = {
     sound: honk.sound,
     message: sanitizeHtml(honk.message),
   };
-  const query = btoa(JSON.stringify(data));
-  return document.location.href.replace(/\?.+$/, "") + `?honk=${query}`;
+
+  const binary = btoa(JSON.stringify(data))
+  const query = `?honk=${binary}`;
+
+  // Replaces any current query params with the honk's.
+  return document.location.href.replace(/\?.+$/, "") + query;
 }
 
-export function retrieveHonk() {
-  const fromUrl = _extractUrlData();
-  return fromUrl ? fromUrl : null;
+/** Reads the current URL for a honk and returns it if found. */
+export function getHonk(): HonkData | null {
+  const honk = extractUrlData();
+  return honk ? honk : null;
+}
+
+/**
+ * Plays a honk back to you.
+ * @param audio Scoped audio element interface.
+ */
+export function playHonk(audio: AudioElement) {
+  audio.element?.play();
 }
 
 export const soundLibrary = {
