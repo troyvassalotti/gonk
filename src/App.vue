@@ -9,17 +9,7 @@ import "./assets/reset.css";
 const store = {
   state: reactive({
     availableHonk: getHonk(),
-    toast: !!getHonk(),
   }),
-
-  /**
-   * @note Delayed by 100ms to keep smooth scrolling active
-   */
-  closeToast() {
-    setTimeout(() => {
-      store.state.toast = false;
-    }, 100);
-  },
 };
 </script>
 
@@ -45,7 +35,7 @@ const store = {
       id="receivedHonk"
     />
   </div>
-  <Prompt :available="store.state.toast" :onClick="store.closeToast" />
+  <Prompt v-if="store.state.availableHonk" />
 </template>
 
 <style>
