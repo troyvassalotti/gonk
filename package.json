@@ -5,6 +5,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "deploy": "netlify deploy --prod",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
